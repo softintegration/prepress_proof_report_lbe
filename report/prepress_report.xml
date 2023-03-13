@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="paperformat_prepress_proof" model="report.paperformat">
+            <field name="name">Prepress proof</field>
+            <field name="default" eval="True" />
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_spacing">10</field>
+            <field name="disable_shrinking" eval="True"/>
+            <field name="dpi">96</field>
+        </record>
+
+        <record id="action_report_prepress_proof" model="ir.actions.report">
+            <field name="name">Prepress proof</field>
+            <field name="model">prepress.proof</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">prepress_proof_report_lbe.report_prepress_proof</field>
+            <field name="report_file">prepress_proof_report_lbe.report_prepress_proof</field>
+            <field name="print_report_name">'Prepress proof - %s' % (object.name or ' ').replace('/','')</field>
+            <field name="binding_model_id" ref="prepress_management.model_prepress_proof"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="prepress_proof_report_lbe.paperformat_prepress_proof"/>
+        </record>
+
+    </data>
+</odoo>

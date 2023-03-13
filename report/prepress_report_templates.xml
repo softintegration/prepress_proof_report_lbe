@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+
+
+<template id="report_prepress_proof_document">
+    <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})" />
+    <div class="page" style="font-family:calibri;">
+        <div class="oe_structure"/>
+        <div class="row" style="margin-left:10px;">
+            <div class="col-8" style="padding:0px;">
+                <div class="row" style="width:525px !important;">
+                    <div class="col-5" style="border:2px solid #000000;border-right:0;height:125px;width:184px !important;">
+                    <center>
+                        <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)"
+                                     style="width:155px;height:80;margin-top:1px;"/>
+                    </center>
+                    <div class="col-12">
+                        <center>
+                            <address style="font-size:8px !important;">
+                                <span t-field="doc.company_id.street"/> <span t-field="doc.company_id.city"/>,<span t-field="doc.company_id.country_id.name"/><br/>
+                                <b>Tél: </b><span t-field="doc.company_id.phone"/><br/>
+                            </address>
+                        </center>
+                    </div>
+                </div>
+                    <div class="col-8" style="border:2px solid #000000;height:125px;padding:3px;font-size:8px !important;width:341px !important;">
+                    <p>
+                        Cette épreuve a été créée pour obtenir le bon à tirer (BAT) du client ou de la personne
+                        autorisée par ce dernier.<br/>
+                        Il est possible que les couleurs ne soient pas fidèlement reproduits sur cette épreuve,
+                        elle a été réalisée à l’aide de moyens numériques et sur un support différent de celui
+                        qui sera utilisé pour la reproduction réelle, c’est pourquoi il est essentiel de se référer
+                        aux couleurs du nuancier Pantone®.<br/>
+                        Le Bouquet Emballages ne sera pas tenu responsable des possibles erreurs ou omissions
+                        figurants sur ce bon à tirer, quelle que soit leur origine.
+                    </p>
+                </div>
+                </div>
+                <div class="row" style="border:2px solid #000000;font-size:11px !important;border-top:0;height:25px;width:525px !important;">
+                    <div class="col-12" style="padding:0px !important;margin-left:2px;">
+                        Customer :
+                        <b><span t-field="doc.partner_id" style="text-transform: uppercase;"/></b>
+                    </div>
+                </div>
+                <div class="row" style="border:2px solid #000000;font-size:11px !important;border-top:0;height:25px;width:525px !important;">
+                    <div class="col-12" style="padding:0px !important;margin-left:2px;">
+                        Product :
+                        <b><span t-field="doc.product_id" style="text-transform: uppercase;"/></b>
+                    </div>
+                </div>
+                <div class="row" style="border:2px solid #000000;font-size:11px !important;border-top:0;height:25px;width:525px !important;">
+                    <div class="col-5" style="padding:0px !important;">
+                        <span style="margin-left:2px !important;">Ref BAT:</span>
+                        <b><span t-field="doc.name"/></b>
+                    </div>
+                    <div class="col-7" style="border-left:2px solid #000000;height:25px !important;padding:0px !important;">
+                        <span style="margin-left:2px !important;">Internal dimensions LxExH :</span>
+                        <b><span t-field="doc.product_width"/> x <span t-field="doc.product_thickness"/> x <span t-field="doc.product_height"/> <span t-field="doc.product_height_uom_id"/></b>
+                    </div>
+                </div>
+                <div class="row" style="border:2px solid #000000;font-size:11px !important;border-top:0;height:25px;width:525px !important;">
+                    <div class="col-5" style="padding:0px !important;">
+                        <span style="margin-left:2px !important;">Ref BAT customer:</span>
+                        <b><span t-field="doc.client_ref"/></b>
+                    </div>
+                    <div class="col-7" style="border-left:2px solid #000000;height:25px !important;padding:0px !important;">
+                        <div class="col-6" style="padding:0px;">
+                            <span style="margin-left:2px !important;">Product weight</span>
+                            <b><span t-field="doc.product_gram_weight"/> <span t-field="doc.product_gram_weight_uom_id"/> +-  <span style="color:transparent;">....</span>%</b>
+                        </div>
+                        <div class="col-6" t-if="doc.product_id.notice_type == 'folded'"
+                                         style="border-left:2px solid #000000;height:25px !important;">
+                            <p style="line-height:12px;margin-left:2px !important;">
+                                <span style="margin-left:2px !important;">Folding dimensions</span>
+                                <b><span t-field="doc.product_id.folding_dimension"/></b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="border:2px solid #000000;font-size:11px !important;border-top:0;height:25px;width:525px !important;">
+                    <div class="col-5" style="padding:0px !important;">
+                        <span style="margin-left:2px !important;">Pharmacode:</span>
+                        <b>.................</b>
+                    </div>
+                    <div class="col-5" style="border-left:2px solid #000000;height:25px !important;padding:0px !important;">
+                        <span style="margin-left:2px !important;">Carton type</span>
+                        <b>
+                            <span t-field="doc.product_id.product_quality_id"/>
+                        </b>
+                    </div>
+                    <div t-if="doc.product_id.notice_type == 'folded'" class="col-2" style="background-color:#ee5420;font-size:12px;text-transform: uppercase;color:#ffffff;height:22px !important;padding:5px !important;width:45px;float:right;">
+                        <span t-field="doc.product_id.notice_type" />
+                    </div>
+                    <div t-if="doc.product_id.notice_type == 'flat'" class="col-2" style="background-color:#3dbd3d;font-size:12px;text-transform: uppercase;color:#ffffff;height:22px !important;padding:5px !important;width:60px;float:right;">
+                        <span t-field="doc.product_id.notice_type" />
+                    </div>
+                </div>
+                <div class="row" style="border:2px solid #000000;font-size:11px !important;border-top:0;height:25px;width:525px !important;">
+                    <div class="col-5" style="padding:0px !important;">
+                        <span style="margin-left:2px !important;">Creation date:</span>
+                        <b>.................</b>
+                    </div>
+                    <div class="col-7" style="border-left:2px solid #000000;height:22px !important;padding:0px !important;">
+                        <span style="margin-left:2px !important;">Update date</span>
+                        <b>.................</b>
+                    </div>
+                </div>
+                <div class="row" style="border:2px solid #000000;font-size:9px !important;height:65px;padding:0px;margin-top:2px;width:525px !important;">
+                    <div class="col-2" style="line-height:65px;height:100% !important;">
+                        <span style="margin-top:10px !important;">Color(s):</span>
+                    </div>
+                    <div class="col-10" style="border-left:2px solid #000000;height:100% !important;padding:0px;">
+                        <div clas="row">
+                            <table style="line-height:15px !important;">
+                                <thead style="height:100% !important;">
+                                    <t t-foreach="doc.color_ids" t-as="color_line">
+                                        <th>
+                                            <center>PANTONE</center>
+                                            <center><span t-field="color_line.color_id"/></center>
+                                        </th>
+                                    </t>
+                                </thead>
+                                <tbody style="height:100% !important;">
+                                    <t t-foreach="doc.color_ids" t-as="color_line">
+                                        <th>
+                                            <center>
+                                                <div t-attf-style="border:1px solid #000000 !important;width:20px !important;max-height:14px !important;min-height:14px !important;color:transparent;background-color: #{color_line.color_code};">
+                                                </div>
+                                            </center>
+                                        </th>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2" style="padding:1px;margin-top:-1px;margin-left:-2px;">
+                <div class="col-12" style="border:2px solid #000000;border-bottom:0;font-size:9px;font-weight:bold;height:30px;line-height:30px;width:126px !important;">
+                    <center>Marketing</center>
+                </div>
+                <div class="col-12" style="border:2px solid #000000;height:140px;width:126px !important;">
+
+                </div>
+                <div class="col-12" style="border:2px solid #000000;border-bottom:0;font-size:9px;font-weight:bold;margin-top:2px;height:30px;line-height:30px;width:126px !important;">
+                    <center>Maintenance</center>
+                </div>
+                <div class="col-12" style="border:2px solid #000000;height:140px;width:126px !important;">
+
+                </div>
+            </div>
+            <div class="col-2" style="padding:1px;margin-top:-1px;">
+                <div class="col-12" style="border:2px solid #000000;border-bottom:0;font-size:8px;font-weight:bold;margin-top:2px;height:30px;line-height:30px;width:126px !important;">
+                    <center>Regulatory Affairs</center>
+                </div>
+                <div class="col-12" style="border:2px solid #000000;height:140px;width:126px !important;">
+
+                </div>
+                <div class="col-12" style="border:2px solid #000000;border-bottom:0;font-size:9px;font-weight:bold;margin-top:2px;height:30px;line-height:30px;width:126px !important;">
+                    <center>Quality assurance</center>
+                </div>
+                <div class="col-12" style="border:2px solid #000000;height:140px;width:126px !important;">
+
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-left:1px;">
+            <center><span t-raw="doc.dummy"/></center>
+        </div>
+    </div>
+</template>
+
+
+<template id="report_prepress_proof">
+    <t t-call="web.basic_layout">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="prepress_proof_report_lbe.report_prepress_proof_document" t-lang="doc.partner_id.lang"/>
+        </t>
+    </t>
+</template>
+
+
+</odoo>
