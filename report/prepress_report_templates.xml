@@ -108,33 +108,33 @@
                         <b>.................</b>
                     </div>
                 </div>
-                <div class="row" style="border:2px solid #000000;font-size:9px !important;height:65px;padding:0px;margin-top:2px;width:525px !important;">
+                <div class="row" style="border:2px solid #000000;font-size:9px !important;height:65px;padding:0px;margin-top:2px;width:780px !important;">
                     <div class="col-2" style="line-height:65px;height:100% !important;">
                         <span style="margin-top:10px !important;">Color(s):</span>
                     </div>
                     <div class="col-10" style="border-left:2px solid #000000;height:100% !important;padding:0px;">
-                        <div clas="row">
-                            <table style="line-height:15px !important;">
-                                <thead style="height:100% !important;">
+                        <center>
+                            <table style="line-height:13px !important;">
+                                <thead>
                                     <t t-foreach="doc.color_ids" t-as="color_line">
-                                        <th style="padding-left:10px;padding-right:10px;padding-top:5px;">
+                                        <th style="padding-left:10px;padding-right:10px;">
                                             <center>PANTONE</center>
                                             <center><span t-field="color_line.color_id.name"/></center>
                                         </th>
                                     </t>
                                 </thead>
-                                <tbody style="height:100% !important;">
+                                <tbody>
                                     <t t-foreach="doc.color_ids" t-as="color_line">
                                         <th>
                                             <center>
-                                                <div t-attf-style="border:1px solid #000000 !important;width:20px !important;max-height:14px !important;min-height:14px !important;color:transparent;background-color: #{color_line.color_code};">
+                                                <div t-attf-style="border:1px solid #000000 !important;width:35px !important;max-height:16px !important;min-height:16px !important;color:transparent;background-color: #{color_line.color_code};">
                                                 </div>
                                             </center>
                                         </th>
                                     </t>
                                 </tbody>
                             </table>
-                        </div>
+                        </center>
                     </div>
                 </div>
             </div>
@@ -142,13 +142,13 @@
                 <div class="col-12" style="border:2px solid #000000;border-bottom:0;font-size:9px;font-weight:bold;height:30px;line-height:30px;width:126px !important;">
                     <center>Marketing</center>
                 </div>
-                <div class="col-12" style="border:2px solid #000000;height:140px;width:126px !important;">
+                <div class="col-12" style="border:2px solid #000000;height:107px;width:126px !important;">
 
                 </div>
                 <div class="col-12" style="border:2px solid #000000;border-bottom:0;font-size:9px;font-weight:bold;margin-top:2px;height:30px;line-height:30px;width:126px !important;">
                     <center>Maintenance</center>
                 </div>
-                <div class="col-12" style="border:2px solid #000000;height:140px;width:126px !important;">
+                <div class="col-12" style="border:2px solid #000000;height:107px;width:126px !important;">
 
                 </div>
             </div>
@@ -156,13 +156,13 @@
                 <div class="col-12" style="border:2px solid #000000;border-bottom:0;font-size:8px;font-weight:bold;margin-top:2px;height:30px;line-height:30px;width:126px !important;">
                     <center>Regulatory Affairs</center>
                 </div>
-                <div class="col-12" style="border:2px solid #000000;height:140px;width:126px !important;">
+                <div class="col-12" style="border:2px solid #000000;height:107px;width:126px !important;">
 
                 </div>
                 <div class="col-12" style="border:2px solid #000000;border-bottom:0;font-size:9px;font-weight:bold;margin-top:2px;height:30px;line-height:30px;width:126px !important;">
                     <center>Quality assurance</center>
                 </div>
-                <div class="col-12" style="border:2px solid #000000;height:140px;width:126px !important;">
+                <div class="col-12" style="border:2px solid #000000;height:107px;width:126px !important;">
 
                 </div>
             </div>
