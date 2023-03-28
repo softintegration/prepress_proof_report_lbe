@@ -52,40 +52,41 @@
                     </div>
                 </div>
                 <div class="row" style="border:2px solid #000000;font-size:11px !important;border-top:0;height:25px;width:525px !important;">
-                    <div class="col-5" style="padding:0px !important;">
+                    <div class="col-4" style="padding:0px !important;">
                         <span style="margin-left:2px !important;">Ref BAT:</span>
                         <b><span t-field="doc.name"/></b>
                     </div>
-                    <div class="col-7" style="border-left:2px solid #000000;height:25px !important;padding:0px !important;">
+                    <div class="col-8" style="border-left:2px solid #000000;height:25px !important;padding:0px !important;">
                         <span style="margin-left:2px !important;">Internal dimensions LxExH :</span>
                         <b><span t-field="doc.product_width"/> x <span t-field="doc.product_thickness"/> x <span t-field="doc.product_height"/> <span t-field="doc.product_height_uom_id"/></b>
                     </div>
                 </div>
                 <div class="row" style="border:2px solid #000000;font-size:11px !important;border-top:0;height:25px;width:525px !important;">
-                    <div class="col-5" style="padding:0px !important;">
+                    <div class="col-4" style="padding:0px !important;">
                         <span style="margin-left:2px !important;">Ref BAT customer:</span>
                         <b><span t-field="doc.client_ref"/></b>
                     </div>
-                    <div class="col-7" style="border-left:2px solid #000000;height:25px !important;padding:0px !important;">
-                        <div class="col-6" style="padding:0px;">
+                    <div class="col-8" style="border-left:2px solid #000000;height:25px !important;padding:0px !important;">
+                        <div  style="padding:0px;">
                             <span style="margin-left:2px !important;">Product weight</span>
-                            <b><span t-esc="int(doc.product_gram_weight)"/> <span t-field="doc.product_gram_weight_uom_id"/> +-  <span style="color:transparent;">....</span>%</b>
-                        </div>
-                        <div class="col-6" t-if="doc.product_id.notice_type == 'folded'"
-                                         style="border-left:2px solid #000000;height:25px !important;">
-                            <p style="line-height:12px;margin-left:2px !important;">
+                            <b><span t-esc="doc.product_gram_weight"/> <span t-field="doc.product_gram_weight_uom_id"/> +-  %</b>
+                            <t t-if="doc.product_id.notice_type == 'folded'" style="line-height:12px;margin-left:2px !important;">
                                 <span style="margin-left:2px !important;">Folding dimensions</span>
-                                <b><span t-field="doc.product_id.folding_dimension"/></b>
-                            </p>
+                                <b style="font-size:10px !important;"><span t-field="doc.product_id.folding_dimension"/></b>
+                            </t>
                         </div>
+                        <!--<div class="col-6" t-if="doc.product_id.notice_type == 'folded'"
+                                         style="border-left:2px solid #000000;height:25px !important;">
+
+                        </div>-->
                     </div>
                 </div>
                 <div class="row" style="border:2px solid #000000;font-size:11px !important;border-top:0;height:25px;width:525px !important;">
-                    <div class="col-5" style="padding:0px !important;">
+                    <div class="col-4" style="padding:0px !important;">
                         <span style="margin-left:2px !important;">Pharmacode:</span>
                         <b>.................</b>
                     </div>
-                    <div class="col-5" style="border-left:2px solid #000000;height:25px !important;padding:0px !important;">
+                    <div class="col-6" style="border-left:2px solid #000000;height:25px !important;padding:0px !important;">
                         <span style="margin-left:2px !important;">Carton type</span>
                         <b>
                             <span t-field="doc.product_id.product_quality_id"/>
@@ -99,11 +100,11 @@
                     </div>
                 </div>
                 <div class="row" style="border:2px solid #000000;font-size:11px !important;border-top:0;height:25px;width:525px !important;">
-                    <div class="col-5" style="padding:0px !important;">
+                    <div class="col-4" style="padding:0px !important;">
                         <span style="margin-left:2px !important;">Creation date:</span>
                         <b>.................</b>
                     </div>
-                    <div class="col-7" style="border-left:2px solid #000000;height:22px !important;padding:0px !important;">
+                    <div class="col-8" style="border-left:2px solid #000000;height:22px !important;padding:0px !important;">
                         <span style="margin-left:2px !important;">Update date</span>
                         <b>.................</b>
                     </div>
