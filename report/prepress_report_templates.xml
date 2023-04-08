@@ -26,32 +26,32 @@
                         </center>
                     </div>
                 </div>
-                    <div class="col-8" style="border:2px solid #000000;height:125px;padding:3px;font-size:8px !important;width:341px !important;">
-                    <p>
-                        Cette épreuve a été créée pour obtenir le bon à tirer (BAT) du client ou de la personne
-                        autorisée par ce dernier.<br/>
-                        Il est possible que les couleurs ne soient pas fidèlement reproduits sur cette épreuve,
-                        elle a été réalisée à l’aide de moyens numériques et sur un support différent de celui
-                        qui sera utilisé pour la reproduction réelle, c’est pourquoi il est essentiel de se référer
-                        aux couleurs du nuancier Pantone®.<br/>
-                        Le Bouquet Emballages ne sera pas tenu responsable des possibles erreurs ou omissions
-                        figurants sur ce bon à tirer, quelle que soit leur origine.
-                    </p>
+                    <div class="col-8" style="border:2px solid #000000;height:125px;padding:3px;font-size:9px !important;width:341px !important;">
+                        <p>
+                            Cette épreuve a été créée pour obtenir le bon à tirer (BAT) du client ou de la personne
+                            autorisée par ce dernier.<br/>
+                            Il est possible que les couleurs ne soient pas fidèlement reproduits sur cette épreuve,
+                            elle a été réalisée à l’aide de moyens numériques et sur un support différent de celui
+                            qui sera utilisé pour la reproduction réelle, c’est pourquoi il est essentiel de se référer
+                            aux couleurs du nuancier Pantone®.<br/>
+                            Le Bouquet Emballages ne sera pas tenu responsable des possibles erreurs ou omissions
+                            figurants sur ce bon à tirer, quelle que soit leur origine.
+                        </p>
+                    </div>
                 </div>
-                </div>
-                <div class="row" style="border:2px solid #000000;font-size:10px !important;border-top:0;height:25px;width:525px !important;">
+                <div class="row" style="border:2px solid #000000;font-size:9px !important;border-top:0;height:25px;width:525px !important;">
                     <div class="col-12" style="padding:0px !important;margin-left:2px;">
                         Customer :
                         <b><span t-field="doc.partner_id" style="text-transform: uppercase;"/></b>
                     </div>
                 </div>
-                <div class="row" style="border:2px solid #000000;font-size:10px !important;border-top:0;height:25px;width:525px !important;">
+                <div class="row" style="border:2px solid #000000;font-size:9px !important;border-top:0;height:25px;width:525px !important;">
                     <div class="col-12" style="padding:0px !important;margin-left:2px;">
                         Product :
                         <b><span t-field="doc.product_id" style="text-transform: uppercase;"/></b>
                     </div>
                 </div>
-                <div class="row" style="border:2px solid #000000;font-size:10px !important;border-top:0;height:25px;width:525px !important;">
+                <div class="row" style="border:2px solid #000000;font-size:9px !important;border-top:0;height:25px;width:525px !important;">
                     <div class="col-4" style="padding:0px !important;">
                         <span style="margin-left:2px !important;">Ref BAT:</span>
                         <b><span t-field="doc.name"/></b>
@@ -61,27 +61,36 @@
                         <b><span t-field="doc.product_width"/> x <span t-field="doc.product_thickness"/> x <span t-field="doc.product_height"/> <span t-field="doc.product_height_uom_id"/></b>
                     </div>
                 </div>
-                <div class="row" style="border:2px solid #000000;font-size:10px !important;border-top:0;height:25px;width:525px !important;">
+                <div class="row" style="border:2px solid #000000;font-size:9px !important;border-top:0;height:25px;width:525px !important;">
                     <div class="col-4" style="padding:0px !important;">
                         <span style="margin-left:2px !important;">Ref BAT customer:</span>
                         <b><span t-field="doc.client_ref"/></b>
                     </div>
                     <div class="col-8" style="border-left:2px solid #000000;height:25px !important;padding:0px !important;">
-                        <div  style="padding:0px;">
+                        <div class="row" style="padding:0px;"  t-if="doc.product_id.notice_type == 'folded'">
+                            <div class="col-4" style="border-right:2px solid #000000;height:25px !important;line-height:14px;">
+                                <span style="margin-left:2px !important;">Product weight</span>
+                                <b><span t-esc="doc.product_gram_weight"/> <span t-field="doc.product_gram_weight_uom_id"/> +-  %</b>
+                            </div>
+                            <div class="col-8">
+                                <t t-if="doc.product_id.notice_type == 'folded'" style="line-height:12px;">
+                                    <span style="margin-left:2px !important;">Folding dimensions</span>
+                                    <b style="font-size:10px !important;"><span t-field="doc.product_id.folding_dimension"/></b>
+                                </t>
+                            </div>
+
+                            <!--<span  t-if="doc.product_id.notice_type == 'folded'" style="border-left:2px solid #000000;height:45px !important;color:transparent;">
+                                <p>mos</p>
+                            </span>-->
+
+                        </div>
+                        <div t-if="doc.product_id.notice_type != 'folded'">
                             <span style="margin-left:2px !important;">Product weight</span>
                             <b><span t-esc="doc.product_gram_weight"/> <span t-field="doc.product_gram_weight_uom_id"/> +-  %</b>
-                            <t t-if="doc.product_id.notice_type == 'folded'" style="line-height:12px;margin-left:2px !important;">
-                                <span style="margin-left:2px !important;">Folding dimensions</span>
-                                <b style="font-size:10px !important;"><span t-field="doc.product_id.folding_dimension"/></b>
-                            </t>
                         </div>
-                        <!--<div class="col-6" t-if="doc.product_id.notice_type == 'folded'"
-                                         style="border-left:2px solid #000000;height:25px !important;">
-
-                        </div>-->
                     </div>
                 </div>
-                <div class="row" style="border:2px solid #000000;font-size:10px !important;border-top:0;height:25px;width:525px !important;">
+                <div class="row" style="border:2px solid #000000;font-size:9px !important;border-top:0;height:25px;width:525px !important;">
                     <div class="col-4" style="padding:0px !important;">
                         <span style="margin-left:2px !important;">Pharmacode:</span>
                         <b>.................</b>
@@ -99,7 +108,7 @@
                         <span t-field="doc.product_id.notice_type" />
                     </div>
                 </div>
-                <div class="row" style="border:2px solid #000000;font-size:10px !important;border-top:0;height:25px;width:525px !important;">
+                <div class="row" style="border:2px solid #000000;font-size:9px !important;border-top:0;height:25px;width:525px !important;">
                     <div class="col-4" style="padding:0px !important;">
                         <span style="margin-left:2px !important;">Creation date:</span>
                         <b>.................</b>
