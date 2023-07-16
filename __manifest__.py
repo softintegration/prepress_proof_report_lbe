@@ -10,7 +10,7 @@
     'qweb': [],
     'description': False,
     'images': [],
-    'version': '1.0.1.8',
+    'version': '1.0.1.9',
     'category': 'Prepress/Prepress',
     'demo': [],
     'depends': ['prepress_management','product_quality'],

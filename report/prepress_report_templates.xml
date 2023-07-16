@@ -70,7 +70,8 @@
                         <div class="row" style="padding:0px;"  t-if="doc.product_id.notice_type == 'folded'">
                             <div class="col-4" style="border-right:2px solid #000000;height:25px !important;line-height:14px;">
                                 <span style="margin-left:2px !important;">Product weight</span>
-                                <b><span t-esc="doc.product_gram_weight"/> <span t-field="doc.product_gram_weight_uom_id"/> +-  %</b>
+                                <b t-if="doc.product_gram_weight_type != 'interval'"><span t-esc="doc.product_gram_weight"/> <span t-field="doc.product_gram_weight_uom_id"/> +-  %</b>
+                                <b t-if="doc.product_gram_weight_type == 'interval'">[<span t-esc="doc.product_gram_weight_min"/> <span t-field="doc.product_gram_weight_uom_id"/>,<span t-esc="doc.product_gram_weight_max"/> <span t-field="doc.product_gram_weight_uom_id"/>] +-  %</b>
                             </div>
                             <div class="col-8">
                                 <t t-if="doc.product_id.notice_type == 'folded'" style="line-height:12px;">
@@ -86,7 +87,8 @@
                         </div>
                         <div t-if="doc.product_id.notice_type != 'folded'">
                             <span style="margin-left:2px !important;">Product weight</span>
-                            <b><span t-esc="doc.product_gram_weight"/> <span t-field="doc.product_gram_weight_uom_id"/> +-  %</b>
+                            <b t-if="doc.product_gram_weight_type != 'interval'"><span t-esc="doc.product_gram_weight"/> <span t-field="doc.product_gram_weight_uom_id"/> +-  %</b>
+                            <b t-if="doc.product_gram_weight_type == 'interval'">[<span t-esc="doc.product_gram_weight_min"/> <span t-field="doc.product_gram_weight_uom_id"/>,<span t-esc="doc.product_gram_weight_max"/> <span t-field="doc.product_gram_weight_uom_id"/>] +-  %</b>
                         </div>
                     </div>
                 </div>
